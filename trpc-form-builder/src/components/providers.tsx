@@ -1,7 +1,7 @@
 "use client";
 
-import { trpc } from "@/utils/trpc";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { trpc, trpcClient } from "@/utils/trpc"; // Zorg dat dit pad klopt!
 import { useState } from "react";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -9,7 +9,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <trpc.Provider client={trpc.createClient({ links: [] })} queryClient={queryClient}>
+            <trpc.Provider client={trpcClient} queryClient={queryClient}>
                 {children}
             </trpc.Provider>
         </QueryClientProvider>
